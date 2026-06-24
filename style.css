@@ -1,0 +1,279 @@
+/* === Reset & Base === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f5f4f0;
+  color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* === Layout Wrapper === */
+.tm-wrap {
+  width: 100%;
+  max-width: 540px;
+}
+
+/* === Header === */
+.tm-header {
+  margin-bottom: 2rem;
+}
+
+.tm-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.3px;
+}
+
+.tm-subtitle {
+  font-size: 14px;
+  color: #6b6b6b;
+  margin-top: 4px;
+}
+
+/* === Input Section === */
+.tm-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.tm-input-row input {
+  flex: 1;
+  height: 42px;
+  padding: 0 14px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #d5d3cb;
+  background: #ffffff;
+  color: #1a1a1a;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.tm-input-row input::placeholder {
+  color: #adadad;
+}
+
+.tm-input-row input:focus {
+  border-color: #534AB7;
+  box-shadow: 0 0 0 3px rgba(83, 74, 183, 0.12);
+}
+
+/* Add Task Button */
+#add-btn {
+  height: 42px;
+  padding: 0 20px;
+  border-radius: 8px;
+  border: none;
+  background: #534AB7;
+  color: #eeedfe;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+}
+
+#add-btn:hover {
+  background: #3C3489;
+}
+
+#add-btn:active {
+  transform: scale(0.97);
+}
+
+/* === Filter Buttons === */
+.tm-filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.filter-btn {
+  font-size: 13px;
+  padding: 5px 14px;
+  border-radius: 99px;
+  border: 1px solid #d5d3cb;
+  background: transparent;
+  color: #6b6b6b;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.filter-btn.active {
+  background: #eeedfe;
+  color: #3C3489;
+  border-color: #afa9ec;
+  font-weight: 500;
+}
+
+.filter-btn:hover:not(.active) {
+  background: #f1efe8;
+  color: #1a1a1a;
+}
+
+/* === Task List === */
+.tm-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 60px;
+}
+
+/* Empty State */
+.tm-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6b6b6b;
+  font-size: 15px;
+  list-style: none;
+}
+
+/* Each Task Item */
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #ffffff;
+  border: 1px solid #e8e6df;
+  border-radius: 12px;
+  transition: border-color 0.15s, opacity 0.2s;
+  animation: slide-in 0.18s ease;
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.task-item:hover {
+  border-color: #c8c6be;
+}
+
+/* Completed Task */
+.task-item.done {
+  opacity: 0.6;
+}
+
+.task-item.done .task-name {
+  text-decoration: line-through;
+  color: #adadad;
+}
+
+/* === Complete Button (checkbox style) === */
+.check-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #c8c6be;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.check-btn:hover {
+  border-color: #1D9E75;
+  background: #e1f5ee;
+}
+
+.task-item.done .check-btn {
+  background: #1D9E75;
+  border-color: #1D9E75;
+  color: #e1f5ee;
+}
+
+/* === Task Name === */
+.task-name {
+  flex: 1;
+  font-size: 15px;
+  color: #1a1a1a;
+  line-height: 1.45;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+/* === Delete Button === */
+.del-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #adadad;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.del-btn:hover {
+  background: #fcebeb;
+  color: #a32d2d;
+}
+
+/* === Stats Row === */
+.tm-stats {
+  display: none; /* shown via JS when tasks exist */
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+
+.stat-card {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #e8e6df;
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #6b6b6b;
+  margin-bottom: 2px;
+}
+
+.stat-val {
+  font-size: 22px;
+  font-weight: 600;
+  color: #534AB7;
+}
+
+.stat-val.green {
+  color: #1D9E75;
+}
+
+.stat-val.muted {
+  color: #1a1a1a;
+}
+
+/* === Responsive === */
+@media (max-width: 480px) {
+  .tm-input-row {
+    flex-direction: column;
+  }
+
+  #add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

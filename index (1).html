@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Task Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="tm-wrap">
+    <header class="tm-header">
+      <h1 class="tm-title">Task Manager</h1>
+      <p class="tm-subtitle">Track what you need to get done today</p>
+    </header>
+
+    <!-- Input Section -->
+    <div class="tm-input-row">
+      <input
+        type="text"
+        id="task-input"
+        placeholder="Add a new task..."
+        maxlength="120"
+        aria-label="Task name"
+      />
+      <button id="add-btn" aria-label="Add task">+ Add task</button>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="tm-filters" role="group" aria-label="Filter tasks">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="pending">Pending</button>
+      <button class="filter-btn" data-filter="done">Completed</button>
+    </div>
+
+    <!-- Task List Section -->
+    <ul class="tm-list" id="task-list" aria-label="Task list" aria-live="polite"></ul>
+
+    <!-- Stats -->
+    <div class="tm-stats" id="stats-area">
+      <div class="stat-card">
+        <div class="stat-label">Total tasks</div>
+        <div class="stat-val" id="stat-total">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Completed</div>
+        <div class="stat-val green" id="stat-done">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Remaining</div>
+        <div class="stat-val" id="stat-rem">0</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
